@@ -67,7 +67,7 @@ class AddMovie(FlaskForm):
 def home():
     movies = Movies.query.order_by(Movies.rating.desc()).all()
     for i in range(len(movies)):
-        movies[i].ranking = len(movies) - (10-i) + 1
+        movies[i].ranking = len(movies) - (len(movies)-i) + 1
     # db.session.commit()
     return render_template("index.html", movies=movies)
 
@@ -140,4 +140,4 @@ def get_details():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
