@@ -1,0 +1,27 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,700">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,700">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Add Movie{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1 class="heading">Add a Movie</h1>
+</div>
+{% if max_length == True %}
+<div>
+    <h1 class="max-alert form">You Can't Add More. This is a Top 10 Movie Website, and the Requirement Is Alredy Satisfied!!!</h1>
+</div>
+{% else %}
+<div class="container form text-center">
+    {{ wtf.quick_form(movie_form) }}
+</div>
+{% endif %}
+{% endblock %}
